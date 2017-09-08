@@ -1,0 +1,96 @@
+<aiml version="1.0.1">
+	<category>
+		<pattern> HEY * THIS IS * </pattern>
+		<template>
+			hello <set name = "user"> <star index = "2" /></set>!!
+			I am here to help you in booking a travel ticket.
+			What kind of transportation do you prefer??
+			1.bus
+			2.Train
+		</template>
+	</category>
+
+    <category>
+        <pattern>I WOULD PREFER * </pattern>
+        <that> HELLO * </that>
+        <template>
+            <think>
+                <set name="trans"><star/></set>
+
+            </think>
+            when do u want to book??
+            <!-->
+            <condition name = "trans" value = "bus">
+                would u like to travel in a NON-A/C bus or an A/C bus?
+            </condition>
+             <condition name = "trans" value = "train">would u like to travel in SLEEPER COACH, 3AC or 2AC??</condition>
+             <-->
+        </template>
+    </category>
+
+
+
+    <category>
+        <pattern> BOOK ON * </pattern>
+        <template>So where do you want to go??<think> <set name ="date"> <star/> </set></think></template>
+    </category>
+
+    <category>
+        <pattern> BOOK TO * </pattern>
+        <that>SO WHERE DO YOU WANT TO GO</that>
+        <template>
+            From where do you want to go??<think><set name ="dest"> <star/> </set></think>
+         </template>
+    </category>
+
+    <category>
+        <pattern> BOOK FROM * </pattern>
+        <that>FROM WHERE DO YOU WANT TO GO</that>
+        <template>
+            At what time do you wish to leave on <get name ="date" />?<think><set name ="source"> <star/> </set> </think>
+        </template>
+    </category>
+
+    <category>
+        <pattern> BOOK AT * </pattern>
+        <that>AT WHAT TIME DO YOU WISH TO LEAVE ON *</that>
+        <template>
+            <think>
+              <set name ="tym"> <star/> </set>
+             </think>
+            can I confirm your booking?
+        </template>
+    </category>
+
+    <category>
+        <pattern> YES </pattern>
+        <template>
+           Here are your booking details. A <get name ="trans" /> is booked on <get name ="date" />  from <get name ="soutce" /> to <get name ="dest" /> at <get name ="tym" />
+        </template>
+    </category>
+
+    <category>
+        <pattern> YEAH </pattern>
+        <template>
+        <srai> YES </srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern> YA </pattern>
+        <template>
+        <srai> YES </srai>
+        </template>
+    </category>
+
+	<category>
+	    <pattern> THANK YOU </pattern>
+	    <template>
+	        <random>
+	            <li>Bye <get name = "user" />, Happy Journey</li>
+	            <li>Bye <get name = "user" />, Thanks for Booking</li>
+	        </random>
+	    </template>
+	</category>
+
+</aiml>	
